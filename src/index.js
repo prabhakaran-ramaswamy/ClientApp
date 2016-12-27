@@ -8,6 +8,8 @@ import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/authActions';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 
 import routes from './routes';
 
@@ -18,6 +20,9 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
+
+injectTapEventPlugin();
+
 
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);

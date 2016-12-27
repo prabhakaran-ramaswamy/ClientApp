@@ -1,17 +1,42 @@
 import React from 'react';
-import NavigationBar from './NavigationBar';
-import FlashMessagesList from './flash/FlashMessagesList';
-import MyMenuBar from './menubar/MyMenuBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MenuBar from './MenuBar/MenuBar';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <NavigationBar />
-        <MyMenuBar/>
-        <FlashMessagesList />
-        {this.props.children}
-      </div>
+      <MuiThemeProvider>
+
+        <Grid>
+        <Row>
+          <Col xs={12}>
+            <Row center="xs">
+              <Col xs={6} />
+            </Row>
+          </Col>
+        </Row>
+
+        <Row>
+        <Col xs={12}>
+          <Row start="xs">
+            <Col xs={6} />
+          </Row>
+        </Col>
+        </Row>
+
+        <Row>
+          <Col xs={6} md={3}> <MenuBar /> </Col>
+        </Row>
+        <Row around="xs">
+          <Col xs={2} />
+          <Col xs={2} />
+          <Col xs={2} > <MenuBar /></Col>
+        </Row>
+      </Grid>
+      </MuiThemeProvider>
+
     );
   }
 }
